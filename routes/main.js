@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const articlesData = [
-    {id:1, title:"Article 1", text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid debitis nesciunt inventore quibusdam iste facere beatae? Asperiores exercitationem numquam quia, doloremque sapiente quis a tenetur nisi illum atque minima praesentium!"},
-    {id:2, title:"Article 2", text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid debitis nesciunt inventore quibusdam iste facere beatae? Asperiores exercitationem numquam quia, doloremque sapiente quis a tenetur nisi illum atque minima praesentium!"}
+    {title:"Article 1", text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid debitis nesciunt inventore quibusdam iste facere beatae? Asperiores exercitationem numquam quia, doloremque sapiente quis a tenetur nisi illum atque minima praesentium!"},
+    {title:"Article 2", text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid debitis nesciunt inventore quibusdam iste facere beatae? Asperiores exercitationem numquam quia, doloremque sapiente quis a tenetur nisi illum atque minima praesentium!"}
 ]
 
 
@@ -26,7 +26,6 @@ router.post('/articles', (req,res) => {
     const textValue = req.body.text;
 
     articlesData.push({
-        id:"",
         title:inputValue,
         text:textValue
     })
