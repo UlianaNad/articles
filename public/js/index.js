@@ -8,12 +8,12 @@ const blockRender = async () =>{
     // console.log('post:', result2.data);
 
     let articles = result.data;
-    articles.forEach((article) => {
+    articles.forEach((article, i) => {
         html += `
         <div class="container">
-                <div class="block">
-                    <h3>${article.title}</h3>
-                    <div class="text">
+                <div class="block" id-block="${i}">
+                    <h3 class="title">${article.title}</h3>
+                    <div class="text" id="snow${i}">
                         ${article.text}
                     </div>
                 </div>
@@ -24,15 +24,36 @@ const blockRender = async () =>{
     const wrapper = document.querySelector('.wrapper');
 
     wrapper.innerHTML = html;
+
+    textOpener();
+
 };
-blockRender();
+
 
 const input = document.querySelector('input');
 const text = document.querySelector('textarea');
 const button = document.querySelector('button');
 
+
+const showText = () =>{
+    const textBlock = document.querySelectorAll('.text');
+    textBlock.forEach(function(item){
+        item.classList.toggle('show');
+    });
+};
+
+const textOpener  = async() => {
+    let blocks  = document.querySelectorAll('.block');
+    const textBlock = document.querySelectorAll('.text');
+    blocks.forEach(function(block){
+        block.addEventListener('click', (e) => {
+            showText();
+        });
+    });    
+};
+
+
 const addNewArticle = () =>{
-        
         const inputValue = input.value;
         //console.log(inputValue);
         const textValue = text.value;
@@ -43,13 +64,52 @@ const addNewArticle = () =>{
             } 
             result2();
         }
-        blockRender(); 
+        blockRender();
+       
 };
-button.addEventListener('click', () =>{
-    addNewArticle();
-});
 
 
+const run = () =>{
+    blockRender();
+
+    button.addEventListener('click', () =>{
+        addNewArticle();
+    });
+
+
+};
+document.addEventListener('DOMContentLoaded', ()=>{
+    run();
+})
+
+
+
+
+
+
+//open text
+
+
+
+
+
+
+// const titleBlock = document.querySelector('h3');
+
+// const openText = () => {
+//     textBlock.classList.add('show');
+// };
+// const closeText = () => {
+//     textBlock.classList.remove('show');
+// };
+
+// const textShowing = () => {
+
+// }
+// textBlock.addEventListener('click', () => {
+//     console.log(textBlock);
+//     // openText();
+// });
 
 
 // const run = async () => {
