@@ -15,7 +15,10 @@ body{
         .container{
             // padding: 5px;
            .block{
-
+            .text:not(.show){
+                display: none;
+            }
+            
            }
            .devider{
             height: 1px;
