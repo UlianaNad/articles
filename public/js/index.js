@@ -11,9 +11,9 @@ const blockRender = async () =>{
     articles.forEach((article, i) => {
         html += `
         <div class="container">
-                <div class="block" id-block="${i}">
-                    <h3 class="title">${article.title}</h3>
-                    <div class="text" id="snow${i}">
+                <div class="block">
+                    <h3 class="title" data-block="${i}" >${article.title}</h3>
+                    <div class="text" id="show${i}" data-text="${i}">
                         ${article.text}
                     </div>
                 </div>
@@ -26,6 +26,7 @@ const blockRender = async () =>{
     wrapper.innerHTML = html;
 
     textOpener();
+    textClose();
 
 };
 
@@ -35,21 +36,29 @@ const text = document.querySelector('textarea');
 const button = document.querySelector('button');
 
 
-const showText = () =>{
-    const textBlock = document.querySelectorAll('.text');
-    textBlock.forEach(function(item){
-        item.classList.toggle('show');
-    });
-};
 
-const textOpener  = async() => {
-    let blocks  = document.querySelectorAll('.block');
-    const textBlock = document.querySelectorAll('.text');
-    blocks.forEach(function(block){
+const textOpener  = () => {
+    let blocks  = document.querySelectorAll('.title');
+   
+    blocks.forEach((block) => {
         block.addEventListener('click', (e) => {
-            showText();
+            const item = document.querySelector('#show' + e.target.getAttribute('data-block'));
+            //console.log(item)
+            item.classList.add('show');
         });
     });    
+};
+
+const textClose = () => {
+    let texts = document.querySelectorAll('.text');
+
+    texts.forEach((text) => {
+        text.addEventListener('click', (e) => {
+            const block = document.querySelector('#show' + e.target.getAttribute('data-text'));
+            //console.log(block);
+            block.classList.remove('show');
+        });
+    });
 };
 
 
