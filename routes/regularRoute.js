@@ -8,7 +8,6 @@ router.get('/regular', (req,res) => {
     res.render("regular");
 });
 
-
 router.post('/regular', (req,res) =>{
     console.log(req.body);
     const data = req.body;
@@ -37,26 +36,14 @@ router.post('/regular', (req,res) =>{
         }
     };
     
-    
     const validate = ajv.compile(schema);
     const valid = validate(data);
 
     if (!valid){
         res.json({status: "valid_data error", errors: validate.errors})
     }
-    
     console.log('valid:', valid);
     console.log('errors:', validate.errors);
-
-})
-
-
-
-
-
-
-
-
-
+});
 
 module.exports = router;

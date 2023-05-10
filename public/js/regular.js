@@ -6,7 +6,7 @@ const number = document.querySelector('.number');
 const math = document.querySelector('.math');
 const submitButton = document.querySelector('.submitButton');
 
-submitButton.addEventListener('click', () => {
+const addUser = () => {
     let fname = firstname.value;
     let bdate= date.value;
     let phoneNumber = number.value;
@@ -26,30 +26,10 @@ submitButton.addEventListener('click', () => {
     }
     else{
         console.log('empty');
-    }
-    
+    };
+};
+
+submitButton.addEventListener('click', () => {
+   addUser();
 });
 
-// const addNewUser = () =>{
-//     const nameValue= firstname.value;
-//     const dateValue = date.value;
-//     const numberValue = number.value;
-//     const mathValue = math.value; 
-
-    
-//     if(nameValue && numberValue){
-//         const result = async() =>{
-//             await axios.post('/regular', {
-//             firstname:firstname, 
-//             date:date,
-//             number:number,
-//             math:math
-//         });
-//         result();
-      
-//         } ;
-//     };
-// };
-// submitButton.addEventListener('click', () => {
-//     addNewUser(); 
-// });
