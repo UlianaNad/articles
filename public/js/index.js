@@ -31,12 +31,6 @@ const blockRender = async () =>{
 };
 
 
-const input = document.querySelector('input');
-const text = document.querySelector('textarea');
-const button = document.querySelector('button');
-
-
-
 const textOpener  = () => {
     let blocks  = document.querySelectorAll('.title');
    
@@ -61,34 +55,33 @@ const textClose = () => {
     });
 };
 
+const input = document.querySelector('input');
+const text = document.querySelector('textarea');
+const button = document.querySelector('button');
 
 const addNewArticle = () =>{
-        const inputValue = input.value;
-        //console.log(inputValue);
-        const textValue = text.value;
-        //console.log(textValue);
-        if(input && text){
-            const result2 = async() =>{
-                await axios.post('/articles', {title:inputValue, text:textValue});
-            } 
-            result2();
-        }
-        blockRender();
+    const inputValue = input.value;
+    //console.log(inputValue);
+    const textValue = text.value;
+    //console.log(textValue);
+    if(input && text){
+        const result2 = async() =>{
+            await axios.post('/articles', {title:inputValue, text:textValue});
+        } 
+        result2();
+    }
+    blockRender();
        
 };
 
 
-const run = () =>{
+
+document.addEventListener('DOMContentLoaded', ()=>{
     blockRender();
 
     button.addEventListener('click', () =>{
         addNewArticle();
     });
-
-
-};
-document.addEventListener('DOMContentLoaded', ()=>{
-    run();
 })
 
 
